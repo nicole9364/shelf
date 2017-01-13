@@ -1,0 +1,16 @@
+<div class="productItem-wrapper">
+	<div class="productItem-name">
+		{{$ctrl.product.name}}
+	</div>
+
+	<div class="productItem-stockDiv">
+		<button class="button icon ion-minus-round productItem-stockBtn" ng-click="$ctrl.minusBtnClicked()"></button>
+		<div class="productItem-stockNumb">
+			<span>
+			{{$ctrl.product.numbOfStock}}
+			</span>
+		</div>
+		<button class="button icon ion-plus-round productItem-stockBtn" ng-click="$ctrl.plusBtnClicked()"></button>
+
+	</div>
+</div>

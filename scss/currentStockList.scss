@@ -1,0 +1,56 @@
+.settingsBtn
+{
+	width: inherit;
+	text-align: right;
+	background: black;
+	padding: 5px;
+
+	button.settingsIconBtn
+	{
+		font-size: 20px;
+		width: 37px;
+	}
+
+}
+
+.refreshBtn
+{
+	text-align: left;
+	padding: 5px;
+
+	button.refreshIconBtn
+	{
+		font-size: 20px;
+		width: 37px;
+	}
+}
+
+div.bar-header.headerBar
+{
+	background: black;
+	padding: 0;
+
+	h1.title
+	{
+		color: white;
+	}
+}
+
+label.searchBox
+{
+	width: 80%;
+	justify-content: center;
+	margin: 10px auto;
+
+	i.ion-search.searchBox-icon
+	{
+		font-size: 20px;
+	}
+
+	input.searchBox-input
+	{
+		width: inherit;
+		background: inherit;
+		padding: 0 10px;
+	}
+}

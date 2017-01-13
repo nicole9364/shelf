@@ -1,0 +1,38 @@
+.productItem-wrapper
+{
+	display: inline-flex;
+	width: 100%;
+	margin: 5px 0;
+
+	div.productItem-name
+	{
+		width: 60%;
+		font-size: 20px;
+		padding: 15px;
+		font-weight: bold;
+	}
+
+	div.productItem-stockDiv
+	{
+		display: inline-flex;
+
+		div.productItem-stockNumb
+		{
+			margin: auto 10px;
+
+			span
+			{
+				font-size: 20px;
+				font-weight: bold;
+			}
+		}
+
+		button.productItem-stockBtn
+		{
+			background: #ECECEC;
+			border-radius: 50px;
+			height: 52px;
+			padding: 0;
+		}
+	}
+}

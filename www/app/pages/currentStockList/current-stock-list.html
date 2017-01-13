@@ -1,0 +1,27 @@
+<ion-view>
+	<div class="bar bar-header bar-stable headerBar">
+
+		<div class="refreshBtn">
+			<button class="button ion-refresh refreshIconBtn" ng-click="currentStockListCtrl.pageRefreshClicked()"></button>
+
+		</div>
+		<h1 class="title">Today's Stock List</h1>
+		<div class="settingsBtn">
+			<button class="button ion-gear-a settingsIconBtn"></button>
+		</div>
+	</div>
+
+	<ion-content class="has-header">
+
+		<div>
+			<label class="item-input-wrapper searchBox">
+				<i class="icon ion-search searchBox-icon"></i>
+				<input class="searchBox-input" type="search" placeholder="search for Product">
+			</label>
+		</div>
+
+
+		<product-item ng-repeat="product in currentStockListCtrl.products" product="product"></product-item>
+
+	</ion-content>
+</ion-view>
