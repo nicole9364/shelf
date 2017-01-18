@@ -16,12 +16,41 @@
 		<div>
 			<label class="item-input-wrapper searchBox">
 				<i class="icon ion-search searchBox-icon"></i>
-				<input class="searchBox-input" type="search" placeholder="search for Product">
+				<input ng-model="searchBy" class="searchBox-input" type="search" placeholder="search for Product">
 			</label>
 		</div>
 
+		<button class="categoryBtn" ng-click="currentStockListCtrl.groupButtonClicked('Cake')">
+			Cake
+		</button>
 
-		<product-item ng-repeat="product in currentStockListCtrl.products" product="product"></product-item>
+		<button class="categoryBtn" ng-click="currentStockListCtrl.groupButtonClicked('Log')">
+			Log
+		</button>
+
+		<button class="categoryBtn" ng-click="currentStockListCtrl.groupButtonClicked('Slice')">
+			Slice
+		</button>
+
+		<button class="categoryBtn" ng-click="currentStockListCtrl.groupButtonClicked('All')">
+			All
+		</button>
+
+		<div class="group-heading">{{currentStockListCtrl.groupFilter}}</div>
+
+		<product-item ng-repeat="product in currentStockListCtrl.currentProductList | filter:searchBy" product="product"></product-item>
+
 
 	</ion-content>
+	<!--<ion-footer-bar class="store-location bar-dark">
+		<div class="input-label">
+			Store location
+		</div>
+		<select style="padding-left: 10px;">
+			<option>New Market</option>
+			<option>Dominion Rd</option>
+			<option>Queen St</option>
+			<option>Harris Rd</option>
+		</select>
+	</ion-footer-bar>-->
 </ion-view>

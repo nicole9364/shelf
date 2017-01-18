@@ -1,7 +1,9 @@
 <div class="productItem-wrapper">
 	<div class="productItem-name">
-		{{$ctrl.product.name}}
+		{{$ctrl.product.name}} <!-- - {{$ctrl.product.group}} - {{$ctrl.product.subgroup}}-->
+		<span class="product-group">{{$ctrl.product.group}} / {{$ctrl.product.subgroup}} </span>
 	</div>
+
 
 	<div class="productItem-stockDiv">
 		<button class="button icon ion-minus-round productItem-stockBtn" ng-click="$ctrl.minusBtnClicked()"></button>
@@ -10,7 +12,7 @@
 			{{$ctrl.product.numbOfStock}}
 			</span>
 		</div>
-		<button class="button icon ion-plus-round productItem-stockBtn" ng-click="$ctrl.plusBtnClicked()"></button>
+		<button class="button icon ion-plus-round productItem-stockBtn round-overlay-button" ng-click="$ctrl.plusBtnClicked()"></button>
 
 	</div>
 </div>
