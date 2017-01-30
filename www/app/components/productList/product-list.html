@@ -1,0 +1,13 @@
+<div>
+    <label class="item-input-wrapper searchBox">
+        <i class="icon ion-search searchBox-icon"></i>
+        <input ng-model="$ctrl.searchBy" class="searchBox-input" type="search" placeholder="search for Product">
+    </label>
+</div>
+
+<div ng-repeat="subgroup in $ctrl.subgroups" ><!--<div ng-repeat="subgroup in $ctrl.subgroups" >-->
+    <ion-item ng-click="$ctrl.toggleGroup(subgroup)" ng-class="{showExpandIcon: $ctrl.isGroupCollapsed(subgroup) }">{{subgroup}}</ion-item>
+    <product-item ng-class="{collapsed: $ctrl.isGroupCollapsed(subgroup)}" ng-repeat="product in $ctrl.list[subgroup] | filter:$ctrl.searchBy" product="product"></product-item>
+</div>
+
+

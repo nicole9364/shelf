@@ -8,7 +8,8 @@
 	 * @param {service} $log - Logs messages to the console
 	 * @param {scope} $scope - The scope of the controller
 	 */
-	angular.module('shelf').controller('currentStockListController', ['$log', '$scope', '$state', function ($log, $scope, $state)
+	angular.module('shelf').controller('currentStockListController', ['$log', '$scope', '$state', 'allProductDataService', 'cakeProductDataService',
+        function ($log, $scope, $state, allProductDataService, cakeProductDataService)
 	{
 		/**
 		 * @description Alias of this
@@ -16,119 +17,101 @@
 
 		var _self = this;
 
+        _self.searchBy = "";
+
+        _self.cakeProducts = [];
+
+/*
+        _self.chiffonCakeList = [];
+
+        _self.freshcreamCakeList = [];
+
+        _self.ganacheCakeList = [];
+
+        _self.mousseCakeList = [];*/
+
+        _self.logProducts = [];
+
+        _self.sliceProducts = [];
+
+        _self.groups = ["cake", "log", "slice"];
+
 		/**
 		 * @description Hook event that is triggered before the view is entered
 		 * @author Nicole Park
 		 */
 		$scope.$on('$ionicView.beforeEnter', function () {
-            _self.groupFilter = '';
+            _self.groupFilter = ''
 			/*_self.email = null;
 			 _self.password = null;
 			 _self.emailValidationFailed = false;
 			 _self.passwordValidationFailed = false;*/
 
-            _self.cakeProducts =
-                [
-                    {
-                        name: 'bby no.1',
-                        numbOfStock: 0,
-                        group: 'Cake',
-                        subgroup: 'Fresh cream'
-                    },
-                    {
-                        name: 'bby no.3',
-                        numbOfStock: 0,
-                        group: 'Cake',
-                        subgroup: 'Fresh cream'
-                    },
-                    {
-                        name: 'choc chif no.2',
-                        numbOfStock: 0,
-                        group: 'Cake',
-                        subgroup: 'Chiffon'
-                    },
-                    {
-                        name: 'gt chif no.3',
-                        numbOfStock: 0,
-                        group: 'Cake',
-                        subgroup: 'Chiffon'
-                    },
-                    {
-                        name: 'fc no.1',
-                        numbOfStock: 0,
-                        group: 'Cake',
-                        subgroup: 'Fresh cream'
-                    },
-                    {
-                        name: 'fc no.3',
-                        numbOfStock: 0,
-                        group: 'Cake',
-                        subgroup: 'Fresh cream'
-                    }
-                ];
+            /*cakeProductDataService.getChiffonList().then(function(cakes)
+			{
+            	_self.chiffonCakeList = cakes;
+			});
 
-            _self.logProducts = [
-				{
-					name: 'Chocolate',
-					numbOfStock: 0,
-					group: 'Log'
-				},
-                {
-                    name: 'Kumara',
-                    numbOfStock: 0,
-                    group: 'Log'
-                }
-			];
+            cakeProductDataService.getFreshCreamCakeList().then(function(cakes)
+			{
+				_self.freshcreamCakeList = cakes;
+			});
 
-            _self.sliceProducts = [
-				{
-					name: 'Kumara',
-					numbOfStock: 0,
-					group: '6.5'
-				},
-                {
-                    name: 'Kumara',
-                    numbOfStock: 0,
-                    group: '5.2'
-                },
-                {
-                    name: 'Chocolate',
-                    numbOfStock: 0,
-                    group: '6.5'
-                }
-			];
+            cakeProductDataService.getGanacheCakeList().then(function(cakes)
+			{
+				_self.ganacheCakeList = cakes;
+			});
+
+            cakeProductDataService.getMousseCakeList().then(function(cakes)
+			{
+				_self.mousseCakeList = cakes;
+			});*/
 
 
-            _self.allProducts = _self.cakeProducts.concat(_self.logProducts, _self.sliceProducts);
+            allProductDataService.getAllProductData().then(function(cakes)
+            {
+                _self.cakeProducts = cakes;
 
-            console.log(_self.allProducts);
 
-            _self.currentProductList = _self.allProducts;
+                _self.allProducts =
+					{
+						cake: _self.cakeProducts,
+						log: _self.logProducts,
+						slice: _self.sliceProducts
+					};
+                console.log(_self.allProducts);
+
+                _self.currentCategory = 'Cake';
+                _self.currentProductList = _self.allProducts.cake;
+            });
+
+
 		});
 
 
         _self.pageRefreshClicked = function ()
         {
-            for (var i = 0; i < _self.products.length; i++)
+            for (var i = 0; i < _self.allProducts.length; i++)
             {
                 _self.products[i].numbOfStock = 0;
             }
+
         };
 
         _self.groupButtonClicked = function (groupFilter)
         {
             if(groupFilter == 'Cake')
 			{
+				_self.currentCategory = 'Cake';
 				_self.currentProductList = _self.cakeProducts;
 			}else if(groupFilter == 'Log')
 			{
-                _self.currentProductList = _self.logProducts;
+                _self.currentCategory = 'Log';
+                _self.currentProductList = _self.allProducts.log;
             } else if(groupFilter == 'Slice')
             {
-                _self.currentProductList = _self.sliceProducts;
-            }else
-            {
-                _self.currentProductList = _self.allProducts;
+                _self.currentCategory = 'Slice';
+                _self.currentProductList = _self.allProducts.slice;
             }
         };
 

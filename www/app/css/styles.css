@@ -32,6 +32,13 @@ label.searchBox {
     background: inherit;
     padding: 0 10px; }
 
+.categoryBtn {
+  font-size: 20px;
+  border: transparent;
+  color: #999;
+  margin-left: 10px;
+  background: transparent; }
+
 .productItem-wrapper {
   display: inline-flex;
   width: 100%;
@@ -41,6 +48,10 @@ label.searchBox {
     font-size: 20px;
     padding: 15px;
     font-weight: bold; }
+    .productItem-wrapper div.productItem-name span.product-group {
+      font-size: 14px;
+      display: block;
+      font-weight: normal; }
   .productItem-wrapper div.productItem-stockDiv {
     display: inline-flex; }
     .productItem-wrapper div.productItem-stockDiv div.productItem-stockNumb {
@@ -52,4 +63,12 @@ label.searchBox {
       background: #ECECEC;
       border-radius: 50px;
       height: 52px;
-      padding: 0; }
+      padding: 0;
+      margin: auto; }
+
+@media only screen and (min-width: 768px) {
+  .productItem-wrapper div.productItem-name {
+    width: 79%; } }
+
+.collapsed {
+  display: none; }
